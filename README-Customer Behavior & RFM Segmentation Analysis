@@ -1,0 +1,58 @@
+# Customer Behavior & RFM Segmentation Analysis
+
+## Executive Summary
+This project engineers an end-to-end data pipeline to segment customers based on their purchasing behavior. By analyzing transactional data, the model categorizes users into high-value cohorts, providing actionable business intelligence to drive targeted marketing and retention strategies.
+
+---
+
+## Business Objective
+Understanding customer value is critical for e-commerce growth. This project utilizes **RFM Modeling** to evaluate customer engagement:
+*   **Recency (R):** How recently a customer made a purchase.
+*   **Frequency (F):** How often they purchase.
+*   **Monetary (M):** How much money they spend in total.
+
+Scoring these metrics allows stakeholders to quickly identify VIP customers, re-engage dormant users, and proactively prevent churn.
+
+---
+
+## Data Provenance
+This analysis utilizes a public e-commerce transactional dataset. 
+*   **Structure:** Analyzes core variables including `InvoiceDate`, `Quantity`, `UnitPrice`, and `CustomerID`.
+*   **Integrity:** The dataset was systematically cleaned to ensure only verifiable, authenticated user transactions were included in the final aggregation.
+
+---
+
+## Methodology
+
+### 1. Data Ingestion & Cleaning
+*   Imported raw transactional data utilizing **Pandas**.
+*   Identified and removed incomplete records (missing `CustomerID` values) to ensure high data integrity and accurate loyalty tracking.
+
+### 2. Feature Engineering
+*   Calculated the **Monetary** value per transaction by multiplying `Quantity` by `UnitPrice`.
+*   Aggregated total lifetime spend for each unique customer.
+
+### 3. Advanced Aggregation
+*   Converted string-based dates into actionable datetime objects.
+*   Utilized Pandas `.groupby()` and `.agg()` functions to calculate Recency, Frequency, and Monetary metrics simultaneously, outputting a consolidated summary table.
+
+---
+
+## Visualizations & Insights
+A minimalist, borderless scatterplot was generated to maintain a clean aesthetic and focus stakeholder attention directly on the data points.
+
+*(Note: Once uploaded to GitHub, you can drag and drop your chart image here!)*
+
+### Key Business Takeaways:
+1.  **VIP Identification:** Customers clustered in the top-left quadrant (high spend, low recency days) represent the most valuable, active cohort.
+2.  **Churn Risk:** Customers drifting toward the bottom-right quadrant (low spend, high recency days) represent a high churn risk and require immediate re-engagement campaigns.
+3.  **Frequency Multiplier:** Bubble size indicates that customers who purchase more frequently also tend to have a disproportionately higher lifetime spend, highlighting the value of loyalty programs.
+
+---
+
+## Tech Stack
+*   **Language:** Python
+*   **Data Manipulation:** Pandas
+*   **Data Visualization:** Matplotlib, Seaborn
+*   **Environment:** VS Code, Jupyter Notebooks
+*   **Version Control:** Git & GitHub
